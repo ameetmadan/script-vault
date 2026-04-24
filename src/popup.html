@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Script Vault</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "SF Pro Text", "Segoe UI", sans-serif;
+        background: #f5f1e8;
+        color: #1f1a17;
+      }
+
+      body {
+        margin: 0;
+        min-width: 380px;
+        background:
+          radial-gradient(circle at top right, rgba(201, 123, 66, 0.22), transparent 35%),
+          linear-gradient(180deg, #f8f4ec 0%, #efe7da 100%);
+      }
+
+      .app {
+        padding: 16px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .subtle {
+        margin: 4px 0 0;
+        font-size: 12px;
+        color: #67584f;
+      }
+
+      .toolbar {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      input,
+      button {
+        font: inherit;
+      }
+
+      input[type="search"] {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #cbb9a4;
+        border-radius: 10px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      button {
+        border: 0;
+        border-radius: 10px;
+        padding: 8px 12px;
+        background: #1f1a17;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      button.secondary {
+        background: #e2d3bf;
+        color: #1f1a17;
+      }
+
+      button.danger {
+        background: #a33f28;
+      }
+
+      .script-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .script-card {
+        border: 1px solid rgba(103, 88, 79, 0.2);
+        border-radius: 14px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(8px);
+      }
+
+      .script-card.matching {
+        border-color: rgba(163, 101, 44, 0.55);
+        box-shadow: 0 8px 24px rgba(148, 91, 37, 0.12);
+      }
+
+      .script-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: start;
+      }
+
+      .script-name {
+        margin: 0;
+        font-size: 15px;
+      }
+
+      .badge {
+        flex: none;
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: #f0d7bb;
+      }
+
+      .pattern,
+      .meta,
+      .empty,
+      .status {
+        margin: 8px 0 0;
+        font-size: 12px;
+        color: #67584f;
+        white-space: pre-wrap;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="header">
+        <div>
+          <h1>Script Vault</h1>
+          <p class="subtle" id="active-url">Checking active tab…</p>
+        </div>
+        <button id="open-options" class="secondary" type="button">Options</button>
+      </div>
+
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search scripts" />
+        <p class="status" id="status"></p>
+      </div>
+
+      <div id="script-list" class="script-list"></div>
+    </div>
+
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>

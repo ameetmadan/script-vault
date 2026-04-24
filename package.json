@@ -1,0 +1,24 @@
+{
+  "name": "script-vault",
+  "version": "0.1.0",
+  "description": "A local-first Chrome Extension for saving, searching, and running personal scripts against matching URLs.",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "chrome-extension",
+    "manifest-v3",
+    "typescript",
+    "vite",
+    "scripts"
+  ],
+  "devDependencies": {
+    "@types/chrome": "^0.1.29",
+    "@types/node": "^24.6.1",
+    "typescript": "^5.8.3",
+    "vite": "^7.1.11"
+  }
+}

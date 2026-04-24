@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Script Vault Options</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(9, 87, 74, 0.15), transparent 30%),
+          linear-gradient(180deg, #f4f6f0 0%, #e7ece0 100%);
+        color: #17211d;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 320px minmax(0, 1fr);
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        border-right: 1px solid rgba(23, 33, 29, 0.12);
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(10px);
+      }
+
+      .content {
+        padding: 24px;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      .script-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .script-item {
+        border: 1px solid rgba(23, 33, 29, 0.12);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.75);
+        padding: 12px;
+      }
+
+      .script-item.active {
+        border-color: #2f6d5d;
+        box-shadow: 0 10px 25px rgba(47, 109, 93, 0.12);
+      }
+
+      .script-item button {
+        width: 100%;
+        text-align: left;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        color: inherit;
+        font: inherit;
+      }
+
+      .script-item p {
+        margin: 6px 0 0;
+        font-size: 12px;
+        color: #4b5d56;
+        word-break: break-all;
+      }
+
+      .stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .card {
+        border: 1px solid rgba(23, 33, 29, 0.12);
+        border-radius: 16px;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(10px);
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        font-weight: 600;
+      }
+
+      input,
+      textarea,
+      button {
+        font: inherit;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid rgba(23, 33, 29, 0.2);
+        border-radius: 12px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.86);
+      }
+
+      textarea {
+        min-height: 220px;
+        resize: vertical;
+        font-family: "SFMono-Regular", Consolas, monospace;
+      }
+
+      .button-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      button.primary,
+      button.secondary,
+      button.danger {
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 14px;
+        cursor: pointer;
+      }
+
+      button.primary {
+        background: #17211d;
+        color: white;
+      }
+
+      button.secondary {
+        background: #dce7dd;
+        color: #17211d;
+      }
+
+      button.danger {
+        background: #a33f28;
+        color: white;
+      }
+
+      .status,
+      .hint {
+        margin: 0;
+        color: #4b5d56;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          border-right: 0;
+          border-bottom: 1px solid rgba(23, 33, 29, 0.12);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="stack">
+          <div>
+            <h1>Script Vault</h1>
+            <p class="hint">Create, edit, export, and import local scripts.</p>
+          </div>
+
+          <div class="button-row">
+            <button id="new-script" class="secondary" type="button">New script</button>
+          </div>
+
+          <div id="saved-list" class="script-list"></div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <div class="stack">
+          <section class="card">
+            <h2 id="form-title">Add Script</h2>
+            <form id="script-form" class="stack">
+              <label>
+                Name
+                <input id="name" name="name" required />
+              </label>
+
+              <label>
+                URL pattern
+                <input id="url-pattern" name="urlPattern" placeholder="https://app.example.com/*" required />
+              </label>
+
+              <label>
+                Code
+                <textarea id="code" name="code" required spellcheck="false"></textarea>
+              </label>
+
+              <div class="button-row">
+                <button class="primary" type="submit">Save script</button>
+                <button id="delete-script" class="danger" type="button">Delete</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="card">
+            <h2>Import / Export</h2>
+            <div class="stack">
+              <div class="button-row">
+                <button id="export-json" class="secondary" type="button">Export JSON</button>
+                <button id="import-json" class="primary" type="button">Import JSON</button>
+              </div>
+              <label>
+                JSON payload
+                <textarea id="transfer-json" spellcheck="false"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <p id="status" class="status"></p>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="./options.ts"></script>
+  </body>
+</html>

@@ -2,11 +2,7 @@
 
 Script Vault is a local-first Chrome Extension for saving personal JavaScript snippets, matching them against URL patterns, and running them manually on the active tab.
 
-![alt text](<CleanShot 2026-04-24 at 03.44.23@2x.png>)
-
 It is built with Manifest V3, TypeScript, and Vite. Scripts are stored in `chrome.storage.local`, never auto-run in the MVP, and are injected only after the current tab URL matches the saved wildcard pattern.
-
-![alt text](<CleanShot 2026-04-24 at 03.44.47@2x.png>)
 
 ## Features
 
@@ -75,6 +71,20 @@ npm run typecheck
 3. Click `Load unpacked`
 4. Select the `dist/` directory from this repository
 
+## Install From GitHub Releases
+
+The simplest way to use Script Vault is from the [Releases](https://github.com/ameetmadan/script-vault/releases) tab.
+
+1. Open the latest release
+2. Download `script-vault-chrome-extension.zip`
+3. Extract the zip on your machine
+4. Open `chrome://extensions`
+5. Enable `Developer mode`
+6. Click `Load unpacked`
+7. Select the extracted folder
+
+Each GitHub release contains only the ready-to-load built Chrome extension.
+
 ## How to Test
 
 1. Build the extension with `npm run build`
@@ -115,6 +125,7 @@ Chrome Web Store review may reject extensions that allow arbitrary user-provided
 
 ## Release Checklist
 
+- Create and push a version tag such as `v0.1.0`
 - Run `npm run typecheck`
 - Run `npm run build`
 - Reload the unpacked extension in Chrome
@@ -124,3 +135,5 @@ Chrome Web Store review may reject extensions that allow arbitrary user-provided
 ## Repository Notes
 
 `dist/` and `node_modules/` are intentionally ignored. Build artifacts should be generated locally or in CI rather than committed.
+
+Pushing a tag that matches `v*` triggers GitHub Actions to build the extension and publish `script-vault-chrome-extension.zip` to GitHub Releases.

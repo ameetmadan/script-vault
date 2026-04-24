@@ -2,7 +2,11 @@
 
 Script Vault is a local-first Chrome Extension for saving personal JavaScript snippets, matching them against URL patterns, and running them manually on the active tab.
 
+![alt text](<assets/CleanShot 2026-04-24 at 03.44.23@2x.png>)
+
 It is built with Manifest V3, TypeScript, and Vite. Scripts are stored in `chrome.storage.local`, never auto-run in the MVP, and are injected only after the current tab URL matches the saved wildcard pattern.
+
+![alt text](<assets/CleanShot 2026-04-24 at 03.57.47.gif>)
 
 ## Features
 

@@ -32,8 +32,10 @@ export default defineConfig({
           if (chunkInfo.name === "background") {
             return "background.js";
           }
-          return "assets/[name]-[hash].js";
-        }
+          return "[name]-[hash].js";
+        },
+        chunkFileNames: "[name]-[hash].js",
+        assetFileNames: "[name]-[hash][extname]"
       }
     }
   },

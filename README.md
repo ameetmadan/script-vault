@@ -88,6 +88,7 @@ The simplest way to use Script Vault is from the [Releases](https://github.com/a
 7. Select the extracted folder
 
 Each GitHub release contains only the ready-to-load built Chrome extension.
+Pushes and merges to `main` update the rolling `Latest build` release. Version tags such as `v0.1.0` create separate versioned releases.
 
 ## How to Test
 
@@ -129,7 +130,6 @@ Chrome Web Store review may reject extensions that allow arbitrary user-provided
 
 ## Release Checklist
 
-- Create and push a version tag such as `v0.1.0`
 - Run `npm run typecheck`
 - Run `npm run build`
 - Reload the unpacked extension in Chrome
@@ -140,4 +140,4 @@ Chrome Web Store review may reject extensions that allow arbitrary user-provided
 
 `dist/` and `node_modules/` are intentionally ignored. Build artifacts should be generated locally or in CI rather than committed.
 
-Pushing a tag that matches `v*` triggers GitHub Actions to build the extension and publish `script-vault-chrome-extension.zip` to GitHub Releases.
+Pushes to `main` trigger GitHub Actions to build the extension and update the rolling `Latest build` release with `script-vault-chrome-extension.zip`. Pushing a tag that matches `v*` creates a separate versioned release with the same packaged extension.

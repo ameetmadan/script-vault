@@ -61,7 +61,7 @@ jobs:
           zip -r ../script-vault-chrome-extension.zip .
 
       - name: Publish latest release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: latest
           name: Latest build
@@ -97,7 +97,7 @@ jobs:
           zip -r ../script-vault-chrome-extension.zip .
 
       - name: Publish versioned release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: script-vault-chrome-extension.zip
           generate_release_notes: true

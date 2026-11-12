@@ -1,4 +1,4 @@
-import { copyFileSync, mkdirSync } from "node:fs";
+import { cpSync, copyFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
@@ -12,6 +12,7 @@ function copyManifest() {
       const outDir = resolve(rootDir, "dist");
       mkdirSync(outDir, { recursive: true });
       copyFileSync(resolve(rootDir, "manifest.json"), resolve(outDir, "manifest.json"));
+      cpSync(resolve(rootDir, "icons"), resolve(outDir, "icons"), { recursive: true });
     }
   };
 }

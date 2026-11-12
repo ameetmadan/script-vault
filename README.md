@@ -128,6 +128,17 @@ https://*.example.com/*
 
 Chrome Web Store review may reject extensions that allow arbitrary user-provided code execution, even when stored locally by the user.
 
+## Chrome Web Store Publishing
+
+Everything needed to publish lives in the repo:
+
+- [`store/listing.md`](store/listing.md): listing copy, permission justifications, reviewer notes
+- [`store/submission-checklist.md`](store/submission-checklist.md): screenshots, promo tile specs, account and submission steps
+- [`store/monetization.md`](store/monetization.md): pricing decision (free for v1)
+- [`docs/privacy-policy.md`](docs/privacy-policy.md): privacy policy, hosted via GitHub Pages (`/docs` folder on `main`)
+
+Extension icons are in `icons/` and are copied into `dist/` by the build.
+
 ## Release Checklist
 
 - Run `npm run typecheck`

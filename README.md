@@ -92,6 +92,10 @@ Pushes and merges to `main` update the rolling `Latest build` release. Version t
 
 ## How to Test
 
+Run the automated matcher tests with `npm test`.
+
+Then check the extension manually:
+
 1. Build the extension with `npm run build`
 2. Load `dist/` as an unpacked extension in Chrome
 3. Open the extension popup and click `Options`
